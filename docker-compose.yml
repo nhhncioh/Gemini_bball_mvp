@@ -1,0 +1,33 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./.env
+    command: uvicorn api_main:app --host 0.0.0.0 --port 8000
+    ports: ["8000:8000"]
+    depends_on: [redis]
+    volumes:
+      - ./uploads:/data/uploads
+      - ./outputs:/data/outputs
+      - ./secrets:/secrets:ro
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./.env
+    command: celery -A processor.tasks:celery_app worker --loglevel=INFO
+    depends_on: [redis]
+    volumes:
+      - ./uploads:/data/uploads
+      - ./outputs:/data/outputs
+      - ./secrets:/secrets:ro
+    restart: unless-stopped

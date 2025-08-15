@@ -1,0 +1,29 @@
+# --- core web stack ---
+fastapi
+uvicorn[standard]
+celery
+redis
+pydantic
+python-multipart
+
+# --- video / numeric ---
+opencv-python
+numpy
+scipy
+
+# --- Google Cloud clients (Vertex optional) ---
+google-cloud-aiplatform>=1.66.0
+google-cloud-storage>=2.16.0
+
+# --- Direct Gemini API ---
+google-generativeai>=0.7.2
+
+# --- Detection (optional) ---
+ultralytics==8.3.174
+mediapipe
+filterpy==1.4.5
+
+# Add these to existing requirements
+Pillow>=9.0.0
+ultralytics>=8.3.0
+

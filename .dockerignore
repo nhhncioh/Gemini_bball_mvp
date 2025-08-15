@@ -1,0 +1,31 @@
+# Don't send huge/local stuff into the Docker build context
+.git
+__pycache__/
+*.pyc
+
+# Generated / local data
+outputs/
+uploads/
+
+# Models & heavy assets
+weights/
+models/
+*.pt
+*.onnx
+
+# Random big media
+*.mp4
+*.mov
+*.avi
+*.jpg
+*.jpeg
+*.png
+
+# Local dev folders you don't need inside the image
+frontend/
+experimental/
+api/
+lib/
+coffeescan-clean/
+
+# (Note) .env is read by docker-compose, not copied into the image

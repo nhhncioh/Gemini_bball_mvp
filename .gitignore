@@ -1,0 +1,35 @@
+# Env & secrets
+.env
+.env.*
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.venv/
+.venv*/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+.cache/
+
+# App runtime/output
+uploads/
+outputs/
+logs/
+tmp/
+runs/           # ultralytics/YOLO outputs
+wandb/
+
+# Editors/OS
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Docker compose overrides
+*.local.yml
